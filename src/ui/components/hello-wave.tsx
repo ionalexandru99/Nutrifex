@@ -1,12 +1,11 @@
-import Animated from 'react-native-reanimated';
-
-const waveAnimationStyle = {
-  animationName: {
-    '50%': { transform: [{ rotate: '25deg' }] },
-  },
-  animationIterationCount: 4,
-  animationDuration: '300ms',
-};
+import { useEffect } from 'react';
+import Animated, {
+  useAnimatedStyle,
+  useSharedValue,
+  withRepeat,
+  withSequence,
+  withTiming,
+} from 'react-native-reanimated';
 
 /**
  * Renders an animated waving hand emoji.
@@ -14,8 +13,24 @@ const waveAnimationStyle = {
  * @returns A JSX element containing the animated waving hand.
  */
 export function HelloWave() {
+  const rotation = useSharedValue(0);
+
+  useEffect(() => {
+    rotation.value = withRepeat(
+      withSequence(withTiming(25, { duration: 300 }), withTiming(0, { duration: 300 })),
+      4,
+      false,
+    );
+  }, [rotation]);
+
+  const animatedStyle = useAnimatedStyle(() => {
+    return {
+      transform: [{ rotate: `${rotation.value}deg` }],
+    };
+  });
+
   return (
-    <Animated.Text className="text-[28px] leading-8 -mt-1.5" style={waveAnimationStyle}>
+    <Animated.Text className="text-[28px] leading-8 -mt-1.5" style={animatedStyle}>
       👋
     </Animated.Text>
   );

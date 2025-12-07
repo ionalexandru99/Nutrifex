@@ -82,8 +82,8 @@ export default function ExploreScreen() {
       <Collapsible title="Animations">
         <ThemedText>
           This template includes an example of an animated component. The{' '}
-          <ThemedText type="defaultSemiBold">components/HelloWave.tsx</ThemedText> component uses
-          the powerful{' '}
+          <ThemedText type="defaultSemiBold">@ui/components/hello-wave.tsx</ThemedText> component
+          uses the powerful{' '}
           <ThemedText type="defaultSemiBold" style={{ fontFamily: Fonts.mono }}>
             react-native-reanimated
           </ThemedText>{' '}
@@ -92,7 +92,10 @@ export default function ExploreScreen() {
         {Platform.select({
           ios: (
             <ThemedText>
-              The <ThemedText type="defaultSemiBold">components/ParallaxScrollView.tsx</ThemedText>{' '}
+              The{' '}
+              <ThemedText type="defaultSemiBold">
+                @ui/components/parallax-scroll-view.tsx
+              </ThemedText>{' '}
               component provides a parallax effect for the header image.
             </ThemedText>
           ),

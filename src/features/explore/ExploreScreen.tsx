@@ -1,5 +1,5 @@
 import { Image } from 'expo-image';
-import { Platform, StyleSheet } from 'react-native';
+import { Platform, View } from 'react-native';
 
 import { Fonts } from '@shared/constants/theme';
 import { Collapsible } from '@ui/components/collapsible';
@@ -19,15 +19,12 @@ export default function ExploreScreen() {
     <ParallaxScrollView
       headerBackgroundColor={{ light: '#D0D0D0', dark: '#353636' }}
       headerImage={
-        <IconSymbol
-          size={310}
-          color="#808080"
-          name="chevron.left.forwardslash.chevron.right"
-          style={styles.headerImage}
-        />
+        <View className="bottom-[-90px] left-[-35px] absolute">
+          <IconSymbol size={310} color="#808080" name="chevron.left.forwardslash.chevron.right" />
+        </View>
       }
     >
-      <ThemedView style={styles.titleContainer}>
+      <ThemedView className="flex-row gap-2">
         <ThemedText
           type="title"
           style={{
@@ -64,7 +61,10 @@ export default function ExploreScreen() {
           <ThemedText type="defaultSemiBold">@3x</ThemedText> suffixes to provide files for
           different screen densities
         </ThemedText>
-        <Image source={require('@/assets/images/react-logo.png')} style={styles.reactLogo} />
+        <Image
+          source={require('@/assets/images/react-logo.png')}
+          className="w-[100px] h-[100px] self-center"
+        />
         <ExternalLink href="https://reactnative.dev/docs/images">
           <ThemedText type="link">Learn more</ThemedText>
         </ExternalLink>
@@ -101,21 +101,3 @@ export default function ExploreScreen() {
     </ParallaxScrollView>
   );
 }
-
-const styles = StyleSheet.create({
-  headerImage: {
-    color: '#808080',
-    bottom: -90,
-    left: -35,
-    position: 'absolute',
-  },
-  titleContainer: {
-    flexDirection: 'row',
-    gap: 8,
-  },
-  reactLogo: {
-    width: 100,
-    height: 100,
-    alignSelf: 'center',
-  },
-});

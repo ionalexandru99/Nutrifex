@@ -1,4 +1,5 @@
 import 'react-native-reanimated';
+import '../global.css';
 
 import { RootNavigator, unstable_settings } from '@core/navigation/RootNavigator';
 

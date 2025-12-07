@@ -1,4 +1,3 @@
-import type { PropsWithChildren, ReactElement } from 'react';
 import { StyleSheet } from 'react-native';
 import Animated, {
   interpolate,
@@ -11,6 +10,8 @@ import { ThemedView } from '@/components/themed-view';
 import { useColorScheme } from '@/hooks/use-color-scheme';
 import { useThemeColor } from '@/hooks/use-theme-color';
 
+import type { PropsWithChildren, ReactElement } from 'react';
+
 const HEADER_HEIGHT = 250;
 
 type Props = PropsWithChildren<{
@@ -18,6 +19,14 @@ type Props = PropsWithChildren<{
   headerBackgroundColor: { dark: string; light: string };
 }>;
 
+/**
+ * Renders a scrollable view with a parallax header image that translates and scales based on vertical scroll.
+ *
+ * @param children - Content rendered below the header.
+ * @param headerImage - Element displayed inside the parallax header.
+ * @param headerBackgroundColor - Object with `light` and `dark` background colors used for the header based on the current color scheme.
+ * @returns The scrollable React element containing the animated header and content.
+ */
 export default function ParallaxScrollView({
   children,
   headerImage,
@@ -34,7 +43,7 @@ export default function ParallaxScrollView({
           translateY: interpolate(
             scrollOffset.value,
             [-HEADER_HEIGHT, 0, HEADER_HEIGHT],
-            [-HEADER_HEIGHT / 2, 0, HEADER_HEIGHT * 0.75]
+            [-HEADER_HEIGHT / 2, 0, HEADER_HEIGHT * 0.75],
           ),
         },
         {
@@ -48,13 +57,15 @@ export default function ParallaxScrollView({
     <Animated.ScrollView
       ref={scrollRef}
       style={{ backgroundColor, flex: 1 }}
-      scrollEventThrottle={16}>
+      scrollEventThrottle={16}
+    >
       <Animated.View
         style={[
           styles.header,
           { backgroundColor: headerBackgroundColor[colorScheme] },
           headerAnimatedStyle,
-        ]}>
+        ]}
+      >
         {headerImage}
       </Animated.View>
       <ThemedView style={styles.content}>{children}</ThemedView>

@@ -1,12 +1,21 @@
 import { Image } from 'expo-image';
+import { Link } from 'expo-router';
 import { Platform, StyleSheet } from 'react-native';
 
 import { HelloWave } from '@/components/hello-wave';
 import ParallaxScrollView from '@/components/parallax-scroll-view';
 import { ThemedText } from '@/components/themed-text';
 import { ThemedView } from '@/components/themed-view';
-import { Link } from 'expo-router';
 
+/**
+ * Home screen component that renders a parallax header and a set of onboarding steps.
+ *
+ * The layout includes a themed parallax header with a React logo, a welcome title with an animated
+ * wave, three instructional steps (edit the app file, explore a modal with a contextual menu,
+ * and reset the project), and platform-specific developer shortcuts.
+ *
+ * @returns The Home screen JSX element.
+ */
 export default function HomeScreen() {
   return (
     <ParallaxScrollView
@@ -16,7 +25,8 @@ export default function HomeScreen() {
           source={require('@/assets/images/partial-react-logo.png')}
           style={styles.reactLogo}
         />
-      }>
+      }
+    >
       <ThemedView style={styles.titleContainer}>
         <ThemedText type="title">Welcome!</ThemedText>
         <HelloWave />

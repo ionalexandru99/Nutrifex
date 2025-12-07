@@ -25,7 +25,6 @@ module.exports = defineConfig([
     },
     plugins: {
       'react-native': reactNative,
-      import: importPlugin,
       prettier: prettierPlugin,
     },
     settings: {
@@ -91,7 +90,6 @@ module.exports = defineConfig([
     },
     plugins: {
       'react-native': reactNative,
-      import: importPlugin,
       prettier: prettierPlugin,
     },
     settings: {

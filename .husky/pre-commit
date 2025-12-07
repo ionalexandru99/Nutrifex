@@ -1,1 +1,4 @@
-cd Nutrifex && npx lint-staged
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+cd Nutrifex && npm test && npx lint-staged

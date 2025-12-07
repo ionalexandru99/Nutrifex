@@ -3,8 +3,8 @@
  * https://docs.expo.dev/guides/color-schemes/
  */
 
-import { Colors } from '@/constants/theme';
-import { useColorScheme } from '@/hooks/use-color-scheme';
+import { Colors } from '@shared/constants/theme';
+import { useColorScheme } from '@shared/hooks/use-color-scheme';
 
 /**
  * Selects the appropriate color string for the active theme, allowing an optional per-theme override.

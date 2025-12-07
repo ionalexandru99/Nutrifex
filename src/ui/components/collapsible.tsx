@@ -1,11 +1,10 @@
+import { Colors } from '@shared/constants/theme';
+import { useColorScheme } from '@shared/hooks/use-color-scheme';
+import { IconSymbol } from '@ui/components/icon-symbol';
+import { ThemedText } from '@ui/components/themed-text';
+import { ThemedView } from '@ui/components/themed-view';
 import { PropsWithChildren, useState } from 'react';
 import { StyleSheet, TouchableOpacity } from 'react-native';
-
-import { ThemedText } from '@/components/themed-text';
-import { ThemedView } from '@/components/themed-view';
-import { IconSymbol } from '@/components/ui/icon-symbol';
-import { Colors } from '@/constants/theme';
-import { useColorScheme } from '@/hooks/use-color-scheme';
 
 /**
  * Renders a header that toggles the visibility of its child content when pressed.

@@ -14,6 +14,7 @@ const sharedSettings = {
   'import/resolver': {
     typescript: {
       project: './tsconfig.json',
+      alwaysTryTypes: true,
     },
     node: {
       extensions: ['.js', '.jsx', '.ts', '.tsx'],
@@ -42,6 +43,13 @@ const sharedRules = {
       groups: ['builtin', 'external', 'internal', 'parent', 'sibling', 'index', 'object', 'type'],
       'newlines-between': 'always',
       alphabetize: { order: 'asc', caseInsensitive: true },
+    },
+  ],
+  // Allow path aliases - TypeScript will catch actual resolution errors
+  'import/no-unresolved': [
+    'error',
+    {
+      ignore: ['^@core/', '^@domain/', '^@data/', '^@features/', '^@ui/', '^@shared/', '^@/'],
     },
   ],
 };

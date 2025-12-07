@@ -3,6 +3,7 @@ const { defineConfig } = require('eslint/config');
 const expoConfig = require('eslint-config-expo/flat');
 const prettierConfig = require('eslint-config-prettier');
 const prettierPlugin = require('eslint-plugin-prettier');
+const importPlugin = require('eslint-plugin-import');
 const reactNative = require('eslint-plugin-react-native');
 const tseslint = require('typescript-eslint');
 
@@ -24,6 +25,7 @@ module.exports = defineConfig([
     },
     plugins: {
       'react-native': reactNative,
+      import: importPlugin,
       prettier: prettierPlugin,
     },
     settings: {
@@ -89,6 +91,7 @@ module.exports = defineConfig([
     },
     plugins: {
       'react-native': reactNative,
+      import: importPlugin,
       prettier: prettierPlugin,
     },
     settings: {

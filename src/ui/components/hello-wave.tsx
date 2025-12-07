@@ -21,7 +21,8 @@ export function HelloWave() {
       4,
       false,
     );
-  }, [rotation]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const animatedStyle = useAnimatedStyle(() => {
     return {

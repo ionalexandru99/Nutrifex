@@ -1,9 +1,8 @@
 // https://docs.expo.dev/guides/using-eslint/
 const { defineConfig } = require('eslint/config');
 const expoConfig = require('eslint-config-expo/flat');
-const prettierConfig = require('eslint-config-prettier');
+const prettierConfig = require('eslint-config-prettier/flat');
 const prettierPlugin = require('eslint-plugin-prettier');
-const importPlugin = require('eslint-plugin-import');
 const reactNative = require('eslint-plugin-react-native');
 const tseslint = require('typescript-eslint');
 
@@ -57,6 +56,7 @@ const sharedRules = {
 };
 
 // Shared plugins across all configurations
+// Note: import plugin is already registered by expoConfig
 const sharedPlugins = {
   'react-native': reactNative,
   prettier: prettierPlugin,

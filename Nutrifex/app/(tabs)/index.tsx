@@ -7,6 +7,15 @@ import ParallaxScrollView from '@/components/parallax-scroll-view';
 import { ThemedText } from '@/components/themed-text';
 import { ThemedView } from '@/components/themed-view';
 
+/**
+ * Home screen component that renders a parallax header and a set of onboarding steps.
+ *
+ * The layout includes a themed parallax header with a React logo, a welcome title with an animated
+ * wave, three instructional steps (edit the app file, explore a modal with a contextual menu,
+ * and reset the project), and platform-specific developer shortcuts.
+ *
+ * @returns The Home screen JSX element.
+ */
 export default function HomeScreen() {
   return (
     <ParallaxScrollView

@@ -7,6 +7,13 @@ import { IconSymbol } from '@/components/ui/icon-symbol';
 import { Colors } from '@/constants/theme';
 import { useColorScheme } from '@/hooks/use-color-scheme';
 
+/**
+ * Renders a header that toggles the visibility of its child content when pressed.
+ *
+ * @param title - Text shown in the header of the collapsible section.
+ * @param children - Content rendered inside the collapsible area when expanded.
+ * @returns A React element containing the header and, if expanded, the children.
+ */
 export function Collapsible({ children, title }: PropsWithChildren & { title: string }) {
   const [isOpen, setIsOpen] = useState(false);
   const theme = useColorScheme() ?? 'light';

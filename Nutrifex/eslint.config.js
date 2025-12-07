@@ -7,6 +7,61 @@ const importPlugin = require('eslint-plugin-import');
 const reactNative = require('eslint-plugin-react-native');
 const tseslint = require('typescript-eslint');
 
+// Shared settings across all configurations
+const sharedSettings = {
+  react: {
+    version: 'detect',
+  },
+  'import/resolver': {
+    typescript: {
+      project: './tsconfig.json',
+    },
+    node: {
+      extensions: ['.js', '.jsx', '.ts', '.tsx'],
+    },
+  },
+};
+
+// Shared rules across all configurations
+const sharedRules = {
+  // Prettier as an ESLint rule
+  'prettier/prettier': ['error'],
+
+  // React Native specific
+  'react-native/no-inline-styles': 'warn',
+  'react-native/no-unused-styles': 'warn',
+  'react-native/sort-styles': 'off',
+
+  // React rules
+  'react/prop-types': 'off',
+  'react/react-in-jsx-scope': 'off',
+
+  // Import rules
+  'import/order': [
+    'warn',
+    {
+      groups: [
+        'builtin',
+        'external',
+        'internal',
+        'parent',
+        'sibling',
+        'index',
+        'object',
+        'type',
+      ],
+      'newlines-between': 'always',
+      alphabetize: { order: 'asc', caseInsensitive: true },
+    },
+  ],
+};
+
+// Shared plugins across all configurations
+const sharedPlugins = {
+  'react-native': reactNative,
+  prettier: prettierPlugin,
+};
+
 module.exports = defineConfig([
   expoConfig,
   ...tseslint.configs.recommended,
@@ -23,58 +78,14 @@ module.exports = defineConfig([
         project: './tsconfig.json',
       },
     },
-    plugins: {
-      'react-native': reactNative,
-      prettier: prettierPlugin,
-    },
-    settings: {
-      react: {
-        version: 'detect',
-      },
-      'import/resolver': {
-        typescript: {
-          project: './tsconfig.json',
-        },
-        node: {
-          extensions: ['.js', '.jsx', '.ts', '.tsx'],
-        },
-      },
-    },
+    plugins: sharedPlugins,
+    settings: sharedSettings,
     rules: {
-      // Prettier as an ESLint rule
-      'prettier/prettier': ['error'],
-
-      // React Native specific
-      'react-native/no-inline-styles': 'warn',
-      'react-native/no-unused-styles': 'warn',
-      'react-native/sort-styles': 'off',
-
-      // React rules
-      'react/prop-types': 'off', // we use TS instead
-      'react/react-in-jsx-scope': 'off', // not needed with React 17+
+      ...sharedRules,
 
       // TS rules – you can tighten these over time
       '@typescript-eslint/no-unused-vars': ['warn', { argsIgnorePattern: '^_' }],
       '@typescript-eslint/explicit-module-boundary-types': 'off',
-
-      // Import rules
-      'import/order': [
-        'warn',
-        {
-          groups: [
-            'builtin',
-            'external',
-            'internal',
-            'parent',
-            'sibling',
-            'index',
-            'object',
-            'type',
-          ],
-          'newlines-between': 'always',
-          alphabetize: { order: 'asc', caseInsensitive: true },
-        },
-      ],
     },
   },
   {
@@ -88,54 +99,10 @@ module.exports = defineConfig([
         },
       },
     },
-    plugins: {
-      'react-native': reactNative,
-      prettier: prettierPlugin,
-    },
-    settings: {
-      react: {
-        version: 'detect',
-      },
-      'import/resolver': {
-        typescript: {
-          project: './tsconfig.json',
-        },
-        node: {
-          extensions: ['.js', '.jsx', '.ts', '.tsx'],
-        },
-      },
-    },
+    plugins: sharedPlugins,
+    settings: sharedSettings,
     rules: {
-      // Prettier as an ESLint rule
-      'prettier/prettier': ['error'],
-
-      // React Native specific
-      'react-native/no-inline-styles': 'warn',
-      'react-native/no-unused-styles': 'warn',
-      'react-native/sort-styles': 'off',
-
-      // React rules
-      'react/prop-types': 'off',
-      'react/react-in-jsx-scope': 'off',
-
-      // Import rules
-      'import/order': [
-        'warn',
-        {
-          groups: [
-            'builtin',
-            'external',
-            'internal',
-            'parent',
-            'sibling',
-            'index',
-            'object',
-            'type',
-          ],
-          'newlines-between': 'always',
-          alphabetize: { order: 'asc', caseInsensitive: true },
-        },
-      ],
+      ...sharedRules,
 
       // Disable TS-specific rules for JS files
       '@typescript-eslint/no-var-requires': 'off',

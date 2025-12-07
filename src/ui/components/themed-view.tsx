@@ -8,6 +8,18 @@ export type ThemedViewProps = ViewProps & {
   darkColor?: string;
 };
 
+/**
+ * Render a View whose background color is selected according to the active color scheme.
+ *
+ * If both `lightColor` and `darkColor` are provided, the corresponding value is used for the current scheme;
+ * otherwise the theme's background color for the active scheme is used.
+ *
+ * @param className - Optional class name to apply to the View
+ * @param style - Additional styles to merge with the computed background color
+ * @param lightColor - Optional background color override to use when the color scheme is `light`
+ * @param darkColor - Optional background color override to use when the color scheme is `dark`
+ * @returns A JSX.Element representing a View with its background color set for the current color scheme
+ */
 export function ThemedView({
   className = '',
   style,

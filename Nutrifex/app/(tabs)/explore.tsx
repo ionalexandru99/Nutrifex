@@ -10,12 +10,9 @@ import { IconSymbol } from '@/components/ui/icon-symbol';
 import { Fonts } from '@/constants/theme';
 
 /**
- * Render the Explore screen with a parallax header and a list of informational collapsible sections.
+ * Renders the Explore screen with a parallax header and several informational collapsible sections.
  *
- * The screen uses ParallaxScrollView for a decorative header image and presents multiple Collapsible
- * sections that describe routing, platform support, image handling, color schemes, and animations.
- *
- * @returns A React element containing the screen UI (ParallaxScrollView with header image and content).
+ * @returns A React element containing the screen UI (parallax header and collapsible content).
  */
 export default function TabTwoScreen() {
   return (

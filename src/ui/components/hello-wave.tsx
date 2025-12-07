@@ -8,9 +8,9 @@ import Animated, {
 } from 'react-native-reanimated';
 
 /**
- * Renders an animated waving hand emoji.
+ * Displays a hand emoji that performs a short waving animation (rotates to 25° then back) repeated four times.
  *
- * @returns A JSX element containing the animated waving hand.
+ * @returns The animated hand emoji element.
  */
 export function HelloWave() {
   const rotation = useSharedValue(0);

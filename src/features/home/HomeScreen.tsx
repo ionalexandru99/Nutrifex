@@ -3,8 +3,6 @@ import { ThemedView } from '@ui/components/themed-view';
 
 /**
  * Home screen component with simple welcome text.
- *
- * @returns The Home screen JSX element.
  */
 export default function HomeScreen() {
   return (

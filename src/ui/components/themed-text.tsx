@@ -10,16 +10,7 @@ export type ThemedTextProps = TextProps & {
 };
 
 /**
- * Render a Text element with typography presets and a color that adapts to the current color scheme.
- *
- * The component selects a text color using `lightColor`/`darkColor` when both are provided, otherwise it uses the theme color for the active color scheme. When `type` is `'link'`, a fixed link color is used. Applies type-specific className presets and merges any provided `style` and other Text props.
- *
- * @param className - Additional utility classes applied alongside the preset for the selected `type`.
- * @param style - Additional style or style array merged with the computed `{ color }` style.
- * @param lightColor - Optional color to use when the active color scheme is light; only used when `darkColor` is also provided.
- * @param darkColor - Optional color to use when the active color scheme is dark; only used when `lightColor` is also provided.
- * @param type - Typography preset to apply. One of: `'default'`, `'title'`, `'defaultSemiBold'`, `'subtitle'`, `'link'`.
- * @returns A React Native `Text` element styled according to the resolved color, selected `type` preset, and provided props.
+ * A Text component that adapts color to light/dark mode with typography presets.
  */
 export function ThemedText({
   className = '',
@@ -34,7 +25,7 @@ export function ThemedText({
   const typeClasses = {
     default: 'text-base leading-6',
     defaultSemiBold: 'text-base leading-6 font-semibold',
-    title: 'text-[32px] leading-8 font-bold',
+    title: 'text-[32px] leading-[40px] font-bold',
     subtitle: 'text-xl font-bold',
     link: 'text-base leading-[30px]',
   };

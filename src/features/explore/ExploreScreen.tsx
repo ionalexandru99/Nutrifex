@@ -1,14 +1,24 @@
-import { ThemedText } from '@ui/components/themed-text';
-import { ThemedView } from '@ui/components/themed-view';
+import { Switch, Text, View } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
+
+import { useTheme } from '@shared/theme/ThemeProvider';
 
 /**
- * Settings screen component.
+ * Settings screen with theme toggle.
  */
 export default function ExploreScreen() {
+  const { theme, toggleTheme } = useTheme();
+
   return (
-    <ThemedView className="flex-1 items-center justify-center px-6">
-      <ThemedText type="title">Settings</ThemedText>
-      <ThemedText className="mt-4 text-center">Manage your preferences</ThemedText>
-    </ThemedView>
+    <View className="flex-1 bg-background">
+      <SafeAreaView className="flex-1 px-6">
+        <Text className="mb-8 mt-4 text-3xl font-bold text-foreground">Settings</Text>
+
+        <View className="flex-row items-center justify-between border-b border-border py-4">
+          <Text className="text-lg text-foreground">Dark Mode</Text>
+          <Switch value={theme === 'dark'} onValueChange={toggleTheme} />
+        </View>
+      </SafeAreaView>
+    </View>
   );
 }

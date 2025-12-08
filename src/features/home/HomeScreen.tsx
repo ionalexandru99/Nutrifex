@@ -1,14 +1,13 @@
-import { ThemedText } from '@ui/components/themed-text';
-import { ThemedView } from '@ui/components/themed-view';
+import { Text, View } from 'react-native';
 
 /**
- * Home screen component with simple welcome text.
+ * Home screen - main landing page of the app.
  */
 export default function HomeScreen() {
   return (
-    <ThemedView className="flex-1 items-center justify-center px-6">
-      <ThemedText type="title">Nutrifex</ThemedText>
-      <ThemedText className="mt-4 text-center">Welcome to your nutrition app</ThemedText>
-    </ThemedView>
+    <View className="flex-1 items-center justify-center bg-background px-6">
+      <Text className="text-3xl font-bold text-foreground">Nutrifex</Text>
+      <Text className="mt-4 text-center text-mutedForeground">Welcome to your nutrition app</Text>
+    </View>
   );
 }

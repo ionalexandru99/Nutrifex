@@ -1,29 +1,31 @@
 import { vars } from 'nativewind';
 
+import { palette } from '@shared/theme/palette';
+
 /**
  * Theme definitions using NativeWind CSS variables.
  * These feed into the Tailwind tokens defined in tailwind.config.js
  */
 export const themes = {
   light: vars({
-    '--background': '245 245 245',
-    '--foreground': '17 24 28',
-    '--primary': '10 126 164',
+    '--background': palette.light.background.rgb,
+    '--foreground': palette.light.foreground.rgb,
+    '--primary': palette.light.primary.rgb,
     '--primary-foreground': '255 255 255',
-    '--muted': '156 163 175',
-    '--muted-foreground': '107 114 128',
-    '--border': '229 231 235',
-    '--accent': '129 199 132',
+    '--muted': palette.light.muted.rgb,
+    '--muted-foreground': palette.light.mutedForeground.rgb,
+    '--border': palette.light.border.rgb,
+    '--accent': palette.light.accent.rgb,
   }),
   dark: vars({
-    '--background': '21 23 24',
-    '--foreground': '236 237 238',
-    '--primary': '10 126 164',
+    '--background': palette.dark.background.rgb,
+    '--foreground': palette.dark.foreground.rgb,
+    '--primary': palette.dark.primary.rgb,
     '--primary-foreground': '255 255 255',
-    '--muted': '107 114 128',
-    '--muted-foreground': '156 163 175',
-    '--border': '55 65 81',
-    '--accent': '129 199 132',
+    '--muted': palette.dark.muted.rgb,
+    '--muted-foreground': palette.dark.mutedForeground.rgb,
+    '--border': palette.dark.border.rgb,
+    '--accent': palette.dark.accent.rgb,
   }),
 } as const;
 

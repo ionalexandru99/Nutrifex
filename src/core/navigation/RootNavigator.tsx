@@ -13,6 +13,11 @@ export const unstable_settings = {
   anchor: '(tabs)',
 };
 
+/**
+ * Render the app's navigation stack inside a react-navigation ThemeProvider chosen from the current app theme.
+ *
+ * @returns A React element containing the themed navigation stack with the primary "(tabs)" screen and a status bar.
+ */
 function NavigationContent() {
   const { theme } = useTheme();
 
@@ -27,7 +32,12 @@ function NavigationContent() {
 }
 
 /**
- * Root navigation stack with theme support.
+ * Provide the app's root navigation wrapped with safe-area and theme providers.
+ *
+ * Wraps NavigationContent with SafeAreaProvider and the app ThemeProvider so navigation
+ * has access to safe-area insets and the global theme.
+ *
+ * @returns A React element containing the root navigation tree with safe-area and theme context.
  */
 export function RootNavigator() {
   return (

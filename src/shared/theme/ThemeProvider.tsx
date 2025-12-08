@@ -12,6 +12,12 @@ type ThemeContextValue = {
 
 const ThemeContext = createContext<ThemeContextValue | undefined>(undefined);
 
+/**
+ * Access the current theme context value.
+ *
+ * @returns The theme context value containing `theme`, `setTheme`, and `toggleTheme`.
+ * @throws Error if called outside of a `<ThemeProvider />`.
+ */
 export function useTheme() {
   const ctx = useContext(ThemeContext);
   if (!ctx) throw new Error('useTheme must be used inside <ThemeProvider />');
@@ -22,6 +28,12 @@ type Props = ViewProps & {
   children: React.ReactNode;
 };
 
+/**
+ * Provides theme context to descendants and renders a container View styled with the current theme.
+ *
+ * @param children - React nodes to render inside the themed container
+ * @returns A ThemeContext provider wrapping a View that applies the active theme's styles and renders `children`
+ */
 export function ThemeProvider({ children, ...rest }: Props) {
   const { colorScheme, setColorScheme } = useNativeWindColorScheme();
 

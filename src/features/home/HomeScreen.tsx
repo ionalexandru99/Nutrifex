@@ -1,89 +1,16 @@
-import { Image } from 'expo-image';
-import { Link } from 'expo-router';
-import { Platform } from 'react-native';
-
-import { HelloWave } from '@ui/components/hello-wave';
-import ParallaxScrollView from '@ui/components/parallax-scroll-view';
 import { ThemedText } from '@ui/components/themed-text';
 import { ThemedView } from '@ui/components/themed-view';
 
 /**
- * Home screen component that renders a parallax header and a set of onboarding steps.
- *
- * The layout includes a themed parallax header with a React logo, a welcome title with an animated
- * wave, three instructional steps (edit the app file, explore a modal with a contextual menu,
- * and reset the project), and platform-specific developer shortcuts.
+ * Home screen component with simple welcome text.
  *
  * @returns The Home screen JSX element.
  */
 export default function HomeScreen() {
   return (
-    <ParallaxScrollView
-      headerBackgroundColor={{ light: '#A1CEDC', dark: '#1D3D47' }}
-      headerImage={
-        <Image
-          source={require('@/assets/images/partial-react-logo.png')}
-          className="h-[178px] w-[290px] bottom-0 left-0 absolute"
-        />
-      }
-    >
-      <ThemedView className="flex-row items-center gap-2">
-        <ThemedText type="title">Welcome!</ThemedText>
-        <HelloWave />
-      </ThemedView>
-      <ThemedView className="gap-2 mb-2">
-        <ThemedText type="subtitle">Step 1: Try it</ThemedText>
-        <ThemedText>
-          Edit <ThemedText type="defaultSemiBold">app/(tabs)/index.tsx</ThemedText> to see changes.
-          Press{' '}
-          <ThemedText type="defaultSemiBold">
-            {Platform.select({
-              ios: 'cmd + d',
-              android: 'cmd + m',
-              web: 'F12',
-            })}
-          </ThemedText>{' '}
-          to open developer tools.
-        </ThemedText>
-      </ThemedView>
-      <ThemedView className="gap-2 mb-2">
-        <Link href="/modal">
-          <Link.Trigger>
-            <ThemedText type="subtitle">Step 2: Explore</ThemedText>
-          </Link.Trigger>
-          <Link.Preview />
-          <Link.Menu>
-            <Link.MenuAction title="Action" icon="cube" onPress={() => alert('Action pressed')} />
-            <Link.MenuAction
-              title="Share"
-              icon="square.and.arrow.up"
-              onPress={() => alert('Share pressed')}
-            />
-            <Link.Menu title="More" icon="ellipsis">
-              <Link.MenuAction
-                title="Delete"
-                icon="trash"
-                destructive
-                onPress={() => alert('Delete pressed')}
-              />
-            </Link.Menu>
-          </Link.Menu>
-        </Link>
-
-        <ThemedText>
-          {`Tap the Explore tab to learn more about what's included in this starter app.`}
-        </ThemedText>
-      </ThemedView>
-      <ThemedView className="gap-2 mb-2">
-        <ThemedText type="subtitle">Step 3: Get a fresh start</ThemedText>
-        <ThemedText>
-          {`When you're ready, run `}
-          <ThemedText type="defaultSemiBold">npm run reset-project</ThemedText> to get a fresh{' '}
-          <ThemedText type="defaultSemiBold">app</ThemedText> directory. This will move the current{' '}
-          <ThemedText type="defaultSemiBold">app</ThemedText> to{' '}
-          <ThemedText type="defaultSemiBold">app-example</ThemedText>.
-        </ThemedText>
-      </ThemedView>
-    </ParallaxScrollView>
+    <ThemedView className="flex-1 items-center justify-center px-6">
+      <ThemedText type="title">Nutrifex</ThemedText>
+      <ThemedText className="mt-4 text-center">Welcome to your nutrition app</ThemedText>
+    </ThemedView>
   );
 }

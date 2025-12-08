@@ -16,9 +16,11 @@ export function ThemeProvider({ children, ...rest }: Props) {
   const resolvedTheme = useAtomValue(themeAtom);
 
   const themeVars = themes[resolvedTheme];
+  const { style, ...props } = rest;
+  const mergedStyle = [themeVars, style];
 
   return (
-    <View style={themeVars} className="flex-1" {...rest}>
+    <View style={mergedStyle} className="flex-1" {...props}>
       {children}
     </View>
   );

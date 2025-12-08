@@ -5,24 +5,32 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        light: {
-          text: '#11181C',
-          background: '#fff',
-          tint: '#0a7ea4',
-          icon: '#687076',
-          tabIconDefault: '#687076',
-          tabIconSelected: '#0a7ea4',
-        },
-        dark: {
-          text: '#ECEDEE',
-          background: '#151718',
-          tint: '#fff',
-          icon: '#9BA1A6',
-          tabIconDefault: '#9BA1A6',
-          tabIconSelected: '#fff',
-        },
+        // Design tokens - use CSS variables for dynamic theming
+        background: 'rgb(var(--background) / <alpha-value>)',
+        foreground: 'rgb(var(--foreground) / <alpha-value>)',
+        primary: 'rgb(var(--primary) / <alpha-value>)',
+        primaryForeground: 'rgb(var(--primary-foreground) / <alpha-value>)',
+        muted: 'rgb(var(--muted) / <alpha-value>)',
+        mutedForeground: 'rgb(var(--muted-foreground) / <alpha-value>)',
+        border: 'rgb(var(--border) / <alpha-value>)',
+        accent: 'rgb(var(--accent) / <alpha-value>)',
       },
     },
   },
-  plugins: [],
+  plugins: [
+    // Default values (light theme fallback)
+    ({ addBase }) =>
+      addBase({
+        ':root': {
+          '--background': '245 245 245',
+          '--foreground': '17 24 28',
+          '--primary': '10 126 164',
+          '--primary-foreground': '255 255 255',
+          '--muted': '156 163 175',
+          '--muted-foreground': '107 114 128',
+          '--border': '229 231 235',
+          '--accent': '129 199 132',
+        },
+      }),
+  ],
 };

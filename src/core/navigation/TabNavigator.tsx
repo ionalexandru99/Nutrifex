@@ -1,43 +1,39 @@
+import { Ionicons } from '@expo/vector-icons';
 import { Tabs } from 'expo-router';
-import React from 'react';
+import { useMemo } from 'react';
 
-import { Colors } from '@shared/constants/theme';
-import { useColorScheme } from '@shared/hooks/use-color-scheme';
-import { HapticTab } from '@ui/components/haptic-tab';
-import { IconSymbol } from '@ui/components/icon-symbol';
+import { palette } from '@shared/theme/palette';
+import { useTheme } from '@shared/theme/ThemeProvider';
 
 /**
- * Renders the app's bottom tab layout with Home and Explore screens.
- *
- * Uses the current color scheme to set the active tab tint, hides headers,
- * and applies `HapticTab` as the tab button. Defines the "Home" and "Explore"
- * tabs with their respective icons.
- *
- * @returns A JSX element containing the configured `Tabs` navigator.
+ * Bottom tab navigator with Home and Settings screens.
+ * Tab bar color is derived from the current theme.
  */
 export function TabNavigator() {
-  const colorScheme = useColorScheme();
+  const { theme } = useTheme();
+
+  // Memoize the tab color to avoid recomputing on every render
+  const tabBarActiveTintColor = useMemo(() => palette[theme].primary.hex, [theme]);
 
   return (
     <Tabs
       screenOptions={{
-        tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
+        tabBarActiveTintColor,
         headerShown: false,
-        tabBarButton: HapticTab,
       }}
     >
       <Tabs.Screen
         name="index"
         options={{
           title: 'Home',
-          tabBarIcon: ({ color }) => <IconSymbol size={28} name="house.fill" color={color} />,
+          tabBarIcon: ({ color, size }) => <Ionicons name="home" size={size} color={color} />,
         }}
       />
       <Tabs.Screen
         name="explore"
         options={{
-          title: 'Explore',
-          tabBarIcon: ({ color }) => <IconSymbol size={28} name="paperplane.fill" color={color} />,
+          title: 'Settings',
+          tabBarIcon: ({ color, size }) => <Ionicons name="settings" size={size} color={color} />,
         }}
       />
     </Tabs>

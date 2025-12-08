@@ -1,9 +1,8 @@
 import { useAtom, useAtomValue } from 'jotai';
-import { useColorScheme as useNativeWindColorScheme } from 'nativewind';
 import { View, type ViewProps } from 'react-native';
 
 import { themeAtom, themePreferenceAtom } from '@shared/theme/atoms';
-import { type ThemeName, themes } from '@shared/theme/colors';
+import { themes } from '@shared/theme/colors';
 
 type Props = ViewProps & {
   children: React.ReactNode;
@@ -31,15 +30,9 @@ export function ThemeProvider({ children, ...rest }: Props) {
 export function useTheme() {
   const theme = useAtomValue(themeAtom);
   const [preference, setPreference] = useAtom(themePreferenceAtom);
-  const { colorScheme } = useNativeWindColorScheme();
 
   const toggleTheme = () => {
-    setPreference((prev: ThemeName | 'system') => {
-      if (prev === 'system') {
-        return colorScheme === 'dark' ? 'light' : 'dark';
-      }
-      return prev === 'light' ? 'dark' : 'light';
-    });
+    setPreference(theme === 'light' ? 'dark' : 'light');
   };
 
   return {

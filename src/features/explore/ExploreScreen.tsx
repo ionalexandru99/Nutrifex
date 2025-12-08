@@ -4,7 +4,11 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { useTheme } from '@shared/theme/ThemeProvider';
 
 /**
- * Settings screen with theme toggle.
+ * Render the Settings screen containing a header and a Dark Mode toggle.
+ *
+ * The toggle reflects the current theme and invokes the theme provider's toggle when changed.
+ *
+ * @returns A React element representing the Settings screen UI
  */
 export default function ExploreScreen() {
   const { theme, toggleTheme } = useTheme();

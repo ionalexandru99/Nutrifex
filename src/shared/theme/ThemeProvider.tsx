@@ -2,7 +2,7 @@ import { useColorScheme as useNativeWindColorScheme } from 'nativewind';
 import React, { createContext, useContext, useMemo } from 'react';
 import { View, type ViewProps } from 'react-native';
 
-import { themes, type ThemeName } from './colors';
+import { type ThemeName, themes } from '@shared/theme/colors';
 
 type ThemeContextValue = {
   theme: ThemeName;

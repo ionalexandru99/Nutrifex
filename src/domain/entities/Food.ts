@@ -125,16 +125,22 @@ export class Food {
       throw new Error('Food ID is required');
     }
 
-    if (!this.props.name || this.props.name.trim().length === 0) {
-      throw new Error('Food name is required');
-    }
-
-    if (this.props.name.length > 200) {
-      throw new Error('Food name must be 200 characters or less');
-    }
+    this.validateName(this.props.name);
 
     if (this.props.servingSize <= 0) {
       throw new Error('Serving size must be greater than 0');
+    }
+  }
+
+  /**
+   * Validates the food name according to business rules.
+   */
+  private validateName(name: string): void {
+    if (!name || name.trim().length === 0) {
+      throw new Error('Food name is required');
+    }
+    if (name.length > 200) {
+      throw new Error('Food name must be 200 characters or less');
     }
   }
 
@@ -184,11 +190,11 @@ export class Food {
   }
 
   get createdAt(): Date {
-    return this.props.createdAt;
+    return new Date(this.props.createdAt);
   }
 
   get updatedAt(): Date {
-    return this.props.updatedAt;
+    return new Date(this.props.updatedAt);
   }
 
   /**
@@ -209,12 +215,7 @@ export class Food {
    * Updates the food's name.
    */
   updateName(name: string): Food {
-    if (!name || name.trim().length === 0) {
-      throw new Error('Food name is required');
-    }
-    if (name.length > 200) {
-      throw new Error('Food name must be 200 characters or less');
-    }
+    this.validateName(name);
 
     return new Food({
       ...this.props,

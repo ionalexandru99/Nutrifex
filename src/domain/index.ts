@@ -23,8 +23,4 @@ export {
 } from './value-objects';
 
 // Enums
-export { FoodState } from './enums/FoodState';
-export { FoodCategory } from './enums/FoodCategory';
-export { MeasurementUnit } from './enums/MeasurementUnit';
-export { QuantityType } from './enums/QuantityType';
-export { ExpirationType } from './enums/ExpirationType';
+export { FoodState, FoodCategory, MeasurementUnit, QuantityType, ExpirationType } from './enums';

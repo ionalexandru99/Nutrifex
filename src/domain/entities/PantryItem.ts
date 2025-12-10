@@ -143,7 +143,7 @@ export class PantryItem {
   }
 
   get purchasedAt(): Date | undefined {
-    return this.props.purchasedAt;
+    return this.props.purchasedAt ? new Date(this.props.purchasedAt) : undefined;
   }
 
   get location(): string | undefined {
@@ -155,11 +155,11 @@ export class PantryItem {
   }
 
   get createdAt(): Date {
-    return this.props.createdAt;
+    return new Date(this.props.createdAt);
   }
 
   get updatedAt(): Date {
-    return this.props.updatedAt;
+    return new Date(this.props.updatedAt);
   }
 
   /**
@@ -203,6 +203,7 @@ export class PantryItem {
 
   /**
    * Calculates the macronutrients for the current quantity.
+   * Note: Assumes quantity is in the same unit as the food's servingSize.
    */
   calculateCurrentMacronutrients(): Macronutrients {
     const ratio = this.props.quantity.amount / this.props.food.servingSize;

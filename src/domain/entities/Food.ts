@@ -127,6 +127,10 @@ export class Food {
 
     this.validateName(this.props.name);
 
+    if (this.props.description && this.props.description.length > 500) {
+      throw new Error('Food description must be 500 characters or less');
+    }
+
     if (this.props.servingSize <= 0) {
       throw new Error('Serving size must be greater than 0');
     }
@@ -200,11 +204,11 @@ export class Food {
   /**
    * Calculates macronutrients for a specific quantity.
    *
-   * @param quantity - The quantity in the same unit as servingSize
+   * @param quantity - The quantity in the same unit as servingSize (must be non-negative)
    */
   calculateMacronutrientsForQuantity(quantity: number): Macronutrients {
-    if (quantity <= 0) {
-      throw new Error('Quantity must be greater than 0');
+    if (quantity < 0) {
+      throw new Error('Quantity must be non-negative');
     }
 
     const ratio = quantity / this.props.servingSize;

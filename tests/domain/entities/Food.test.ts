@@ -213,19 +213,21 @@ describe('Food', () => {
         expect(macros.fat).toBe(2.5);
       });
 
-      it('should throw on zero quantity', () => {
+      it('should calculate for zero quantity (resulting in zero macros)', () => {
         const food = createTestFood();
 
-        expect(() => food.calculateMacronutrientsForQuantity(0)).toThrow(
-          'Quantity must be greater than 0',
-        );
+        const macros = food.calculateMacronutrientsForQuantity(0);
+        expect(macros.calories).toBe(0);
+        expect(macros.protein).toBe(0);
+        expect(macros.carbohydrates).toBe(0);
+        expect(macros.fat).toBe(0);
       });
 
       it('should throw on negative quantity', () => {
         const food = createTestFood();
 
         expect(() => food.calculateMacronutrientsForQuantity(-1)).toThrow(
-          'Quantity must be greater than 0',
+          'Quantity must be non-negative',
         );
       });
     });

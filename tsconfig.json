@@ -8,6 +8,8 @@
       "@core/*": ["src/core/*"],
       "@features/*": ["src/features/*"],
       "@shared/*": ["src/shared/*"],
+      "@infrastructure/*": ["src/infrastructure/*"],
+      "@application/*": ["src/application/*"],
       "@/*": ["./*"]
     }
   },

@@ -1,3 +1,4 @@
+// Re-export test database utilities for integration tests
 import { Food, CreateFoodInput } from '@domain/entities/Food';
 import { PantryItem, CreatePantryItemInput } from '@domain/entities/PantryItem';
 import { ExpirationType } from '@domain/enums/ExpirationType';
@@ -8,6 +9,9 @@ import { QuantityType } from '@domain/enums/QuantityType';
 import { ExpirationDate } from '@domain/value-objects/ExpirationDate';
 import { Macronutrients, MacronutrientsProps } from '@domain/value-objects/Macronutrients';
 import { Quantity, QuantityProps } from '@domain/value-objects/Quantity';
+
+export { TestDatabase, createTestDatabase } from './TestDatabase';
+export { TestFoodRepository, TestPantryItemRepository, TestUnitOfWork } from './TestRepositories';
 
 /**
  * Default macronutrients for testing.
